@@ -42,6 +42,7 @@
         <div class="nav">
           <i
             class="fas fa-circle"
+            @click="currentPhoto(index)"
             :class="(index == counterPhotoIndex) ? 'active' : null"
             v-for="(photo, index) in photos"
           >

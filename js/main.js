@@ -12,28 +12,26 @@ const app = new Vue({
       "img/image4.jpg",
     ],
   },
-  created: function() {
-    var self = this;
-    setInterval(function() {
-    if (self.p<100) {
-         self.p++;
-     }
-}, 1000);
+  created() {
+    this.interval();
   },
   methods: {
+    interval() {
+      setInterval(this.nextPhoto, 3000);
+    },
     prevPhoto() {
       this.counterPhotoIndex -= 1;
       if (this.counterPhotoIndex < 0)
         this.counterPhotoIndex = this.photos.length - 1;
-      this.message.textContent = "dff";
+      //   this.message.textContent = "dff";
     },
     nextPhoto() {
       this.counterPhotoIndex += 1;
       if (this.counterPhotoIndex == this.photos.length)
         this.counterPhotoIndex = 0;
     },
-    // currentPhoto() {
-    //   this.counterPhotoIndex += 1;
-    // },
+    currentPhoto(index) {
+      this.counterPhotoIndex = index;
+    },
   },
 });

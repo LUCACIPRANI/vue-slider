@@ -36,10 +36,16 @@ body {
 }
 
 .prev, .next{
-    color: gray;
-    font-size: 40px;
+    color: white;
+    font-size: 50px;
     cursor: pointer;
-    margin: 10px;
+    margin: 20px;
+}
+
+.prev:hover,
+.next:hover{
+    color: gray;
+    transform: scale(1.5);
 }
 
 .nav{
@@ -54,7 +60,7 @@ body {
 }
 
 .nav > i{
-    margin: 0 20px;
+    margin: 0 10px;
 }
 
 .nav > i.active{
