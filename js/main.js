@@ -10,10 +10,21 @@ const app = new Vue({
       "img/image2.jpg",
       "img/image3.jpg",
       "img/image4.jpg",
+      "img/image5.jpeg",
+      "img/image6.jpeg",
     ],
+    pause: true,
+    idInterval: null
   },
-  created() {
-    this.interval();
+  mounted() {
+    // this.interval();
+    document.addEventListener("keydown", (e) => {
+      if (e.key == "ArrowRight") {
+        this.nextPhoto();
+      } else if (e.key == "ArrowLeft") {
+        this.prevPhoto();
+      }
+    });
   },
   methods: {
     interval() {
@@ -23,7 +34,6 @@ const app = new Vue({
       this.counterPhotoIndex -= 1;
       if (this.counterPhotoIndex < 0)
         this.counterPhotoIndex = this.photos.length - 1;
-      //   this.message.textContent = "dff";
     },
     nextPhoto() {
       this.counterPhotoIndex += 1;
@@ -33,5 +43,19 @@ const app = new Vue({
     currentPhoto(index) {
       this.counterPhotoIndex = index;
     },
+    toggleVisibility() {
+      this.pause = !this.pause;
+      this.startStopsSlider();
+    },
+    startStopsSlider() {
+      if(!this.pause) {
+        clearInterval(this.idInterval);
+        this.idInterval =  setInterval( () => {
+          this.nextPhoto() }, 3000);
+      } else {
+        clearInterval(this.idInterval);
+      }
+    }
   },
-});
+})
+

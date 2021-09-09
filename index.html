@@ -27,12 +27,17 @@
     <!-- start container  -->
     <div id="root" class="container">
       <div class="slider-wrapper">
+        <!-- ! play -->
+        <i @click="toggleVisibility" v-if="pause" class="fas fa-play"></i>
+        <!-- ! pause -->
+        <i v-else @click="toggleVisibility" class="fas fa-pause"></i>
+
         <div class="prev" @click="prevPhoto">
           <i class="fas fa-angle-left"></i>
         </div>
 
         <div class="images">
-          <img :src="photos[counterPhotoIndex]"  alt="image" />
+          <img :src="photos[counterPhotoIndex]" alt="image" />
         </div>
 
         <div class="next" @click="nextPhoto">
@@ -49,7 +54,6 @@
           </i>
         </div>
       </div>
-
       <!-- end container  -->
     </div>
 
